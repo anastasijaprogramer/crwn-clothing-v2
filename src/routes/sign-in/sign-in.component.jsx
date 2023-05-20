@@ -1,11 +1,11 @@
-import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils.js";
+import { signInWithGooglePopup, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils.js";
 
 
 const SignIn = () => {
     //whenver we make a request to databse we will use asynchronous functions
     const logGoogleUser = async () => {
-        const response = await signInWithGooglePopup();
-        console.log(response);
+        const {user} = await signInWithGooglePopup();
+        const userDocRef = await createUserDocumentFromAuth(user);
     }
 
     return (
